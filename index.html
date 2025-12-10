@@ -1,35 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Binn's Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header>
-      <h1>Binay</h1>
-      <p>Student | Web Developer</p>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Binay Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
 
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        I love solving problems in digital logic, and building web projects.
-      </p>
-    </section>
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #111;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: #0ff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      position: relative;
+      transition: 0.3s;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -5px;
+      width: 100%; height: 2px;
+      background: magenta;
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    nav a:hover::after {
+      transform: scaleX(1);
+    }
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <ul>
-        <li>Python Flask Portfolio Site</li>
-        <li>Digital Logic Gate Diagrams</li>
-        <li>PowerPoint Methodology Slides</li>
-      </ul>
-    </section>
+    /* Hero Section */
+    .hero {
+      background: url('your-hero-image.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 4em;
+      text-shadow: 0 0 20px #0ff, 0 0 40px magenta;
+      animation: glowPulse 2s infinite alternate;
+    }
+    @keyframes glowPulse {
+      from { text-shadow: 0 0 10px cyan; }
+      to { text-shadow: 0 0 30px magenta; }
+    }
 
-    <footer>
-      <p>Contact: binn@example.com | GitHub | LinkedIn</p>
-    </footer>
-  </body>
+    /* Animated Button */
+    .btn {
+      background: transparent;
+      color: #0ff;
+      padding: 12px 25px;
+      border: 2px solid #0ff;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: 0.4s;
+      margin-top: 20px;
+    }
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, magenta, cyan, lime);
+      transition: 0.4s;
+    }
+    .btn:hover::before {
+      left: 0;
+    }
+    .btn:hover {
+      color: #000;
+      background: #0ff;
+      box-shadow: 0 0 20px cyan, 0 0 40px magenta;
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 20px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeInUp 1s forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Projects Grid */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #111;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px cyan;
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card h3 {
+      margin: 15px 0;
+      color: #0ff;
+    }
+
+    /* Contact Form */
+    .contact form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .contact input, .contact textarea {
+      margin: 10px 0;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    .contact button {
+      background: lime;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .contact button:hover {
+      background: magenta;
+      color: #fff;
+      box-shadow: 0 0 15px cyan;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">Binay</div>
+    <div>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <h1>Hi, I'm Binay</h1>
+    <p>Student</p>
+    <a href="#projects" class="btn">View My Work</a>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" style="animation-delay:0.3s;">
+    <h2>About Me</h2>
+    <p>I love solving problems, building logic gates, and creating teaching materials.</p>
+    <img src="your-about-image.jpg" alt="About Me" width="400">
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" style="animation-delay:0.6s;">
+    <h2>My Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <img src="project1.jpg" alt="Project 1">
+        <h3>Portfolio Website</h3>
+        <p>A sleek black-background site showcasing my skills.</p>
+      </div>
+      <div class="card">
+        <img src="project2.jpg" alt="Project 2">
+        <h3>Logic Gate Simulator</h3>
+        <p>Interactive truth tables and flowcharts for teaching digital logic.</p>
+      </div>
+      <div class="card">
+        <img src="project3.jpg" alt="Project 3">
+        <h3>Database App</h3>
+        <p>A Flask app with SQLite integration for managing student records.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact" style="animation-delay:0.9s;">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <!-- Smooth Scroll Script -->
+  <script>
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href'))
+          .scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
 </html>
-
